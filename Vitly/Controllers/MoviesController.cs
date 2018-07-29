@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Vitly.Models;
 using Vitly.ViewModels;
@@ -11,24 +12,36 @@ namespace Vitly.Controllers
         public ActionResult Random()
         {
             var movie = new Movie {Name = "Shrek!"};
-            var customer = new List<Customer>
+            var customers = new List<Customer>
             {
-                new Customer {Name = "Customer 1"},
-                new Customer {Name = "Customer 1"}
+                new Customer {Id = 1, Name = "John Smith"},
+                new Customer {Id = 2, Name = "Mary Poppins"}
             };
 
             var viewModel = new RandomMovieViewModel
             {
                 Movie = movie,
-                Customers = customer
+                Customers = customers
             };
 
-            return this.View(viewModel);
+                return this.View(viewModel);
+
+            //else
+            //{
+            //    return Content("We don't have any customers yet");
+            //}
+            
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Customer(int id)
         {
-            return this.Content("id = " + id);
+            var customers = new List<Customer>
+            {
+                new Customer {Id = 1, Name = "John Smith"},
+                new Customer {Id = 2, Name = "Mary Poppins"}
+            };
+            var customer = customers.FirstOrDefault(c => c.Id == id);
+            return customer != null ? View(customer) : null;
         }
 
         // movies
