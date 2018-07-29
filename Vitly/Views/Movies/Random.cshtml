@@ -14,17 +14,4 @@
 
 <h2 class="@className">Customers</h2>
 
-@if (Model.Customers.Count == 0)
-{
-    <text>We don't have any customers yet.</text>
-}
-else
-{
-    <ul style="list-style-type: none">
-        <li><b>Customer</b></li>
-        @foreach (Customer customer in Model.Customers)
-        {
-            <li style="text-decoration: underline">@Html.ActionLink(@customer.Name, "Customer", "Movies", new { id = @customer.Id }, null)</li>
-        }
-    </ul>
-}
+<p>@Model.Movie.Name</p>

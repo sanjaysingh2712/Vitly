@@ -1,0 +1,37 @@
+﻿@using Vitly.DatabaseAccess.Core.Model
+@model IEnumerable<Vitly.DatabaseAccess.Core.Model.Customer>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+@if (!Model.Any())
+{
+    <text>We don't have any customers yet.</text>
+}
+else
+{
+    <table id="customers" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>Customer</td>
+            <td>Is Subscribed?</td>
+            <td>MembershipType</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (Customer customer in Model.ToArray())
+        {
+            <tr>
+                <td style="text-decoration: underline">@Html.ActionLink(customer.Name, "Details", "Customers", new {id = customer.CustomerId}, null)</td>
+                <td>@customer.IsSubscribedToNewletter</td>
+                <td>@customer.MembershipType.MembershipTypeId</td>
+            </tr>
+        }
+        </tbody>
+
+    </table>
+}
