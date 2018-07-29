@@ -12,6 +12,7 @@ namespace Vitly.DatabaseAccess.Persistence
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<MembershipType> MempershipTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

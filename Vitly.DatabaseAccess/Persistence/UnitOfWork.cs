@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Vitly.DatabaseAccess.Core;
+using Vitly.DatabaseAccess.Core.Model;
 using Vitly.DatabaseAccess.Core.Repositories;
 using Vitly.DatabaseAccess.Persistence.Repositories;
 
@@ -13,9 +14,11 @@ namespace Vitly.DatabaseAccess.Persistence
         {
             this.context = context;
             Customers = new CustomerRepository(context);
+            MembershipTypes = new Repository<MembershipType>(context);
         }
 
         public ICustomerRepository Customers { get; }
+        public IRepository<MembershipType> MembershipTypes { get; }
 
         public int Commit()
         {

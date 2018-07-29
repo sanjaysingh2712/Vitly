@@ -9,11 +9,11 @@ using Vitly.DatabaseAccess.Core.Repositories;
 
 namespace Vitly.DatabaseAccess.Persistence.Repositories
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext Context;
 
-        protected Repository(DbContext context)
+        public Repository(DbContext context)
         {
             this.Context = context;
         }

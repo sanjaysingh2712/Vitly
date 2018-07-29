@@ -11,7 +11,7 @@ namespace Vitly.DatabaseAccess.Core.Model
         public int CustomerId { get; set; }
         public string Name { get; set; }
         public bool IsSubscribedToNewletter { get; set; }
-        //public MempershipType MempershipType { get; set; }
-        //public int MembersipTypeId { get; set; }
+        public MembershipType MembershipType { get; set; }
+        public int MembershipTypeId { get; set; }
     }
 }
