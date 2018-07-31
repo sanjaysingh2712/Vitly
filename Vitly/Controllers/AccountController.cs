@@ -6,33 +6,34 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Vitly.Models;
+using Vitly.Security.Models;
+using Vitly.Security.Service;
 
 namespace Vitly.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager signInManager;
-        private ApplicationUserManager userManager;
+        private VitlySignInManager signInManager;
+        private VitlyUserManager userManager;
 
         public AccountController() { }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(VitlyUserManager userManager, VitlySignInManager signInManager)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
         }
 
-        public ApplicationSignInManager SignInManager
+        public VitlySignInManager SignInManager
         {
-            get => this.signInManager ?? this.HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            get => this.signInManager ?? this.HttpContext.GetOwinContext().Get<VitlySignInManager>();
             private set => this.signInManager = value;
         }
 
-        public ApplicationUserManager UserManager
+        public VitlyUserManager UserManager
         {
-            get => this.userManager ?? this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            get => this.userManager ?? this.HttpContext.GetOwinContext().GetUserManager<VitlyUserManager>();
             private set => this.userManager = value;
         }
 
@@ -141,7 +142,7 @@ namespace Vitly.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new VitlyUser {UserName = model.Email, Email = model.Email};
                 IdentityResult result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -194,7 +195,7 @@ namespace Vitly.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                ApplicationUser user = await this.UserManager.FindByNameAsync(model.Email);
+                VitlyUser user = await this.UserManager.FindByNameAsync(model.Email);
                 if (user == null || !await this.UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
@@ -241,7 +242,7 @@ namespace Vitly.Controllers
                 return this.View(model);
             }
 
-            ApplicationUser user = await this.UserManager.FindByNameAsync(model.Email);
+            VitlyUser user = await this.UserManager.FindByNameAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
@@ -374,7 +375,7 @@ namespace Vitly.Controllers
                     return this.View("ExternalLoginFailure");
                 }
 
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new VitlyUser {UserName = model.Email, Email = model.Email};
                 IdentityResult result = await this.UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

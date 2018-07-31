@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Vitly.Models;
+using Vitly.DatabaseAccess.Core.Model;
 using Vitly.ViewModels;
 using Customer = Vitly.DatabaseAccess.Core.Model.Customer;
 

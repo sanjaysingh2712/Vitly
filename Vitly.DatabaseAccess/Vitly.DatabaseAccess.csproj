@@ -52,6 +52,7 @@
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Model\Customer.cs" />
     <Compile Include="Core\Model\MembershipType.cs" />
+    <Compile Include="Core\Model\Movie.cs" />
     <Compile Include="Core\Repositories\ICustomerRepository.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Migrations\201807291807565_InitialModel.cs" />
@@ -74,8 +75,13 @@
     <Compile Include="Migrations\201807291928009_PopulateMembershipTypes.Designer.cs">
       <DependentUpon>201807291928009_PopulateMembershipTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807312335474_AddMovie.cs" />
+    <Compile Include="Migrations\201807312335474_AddMovie.Designer.cs">
+      <DependentUpon>201807312335474_AddMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\CustomerConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\MovieConfiguration.cs" />
     <Compile Include="Persistence\Repositories\CustomerRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807291928009_PopulateMembershipTypes.resx">
       <DependentUpon>201807291928009_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807312335474_AddMovie.resx">
+      <DependentUpon>201807312335474_AddMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

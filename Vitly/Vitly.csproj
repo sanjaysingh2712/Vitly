@@ -186,7 +186,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -197,11 +196,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
@@ -273,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -291,6 +286,10 @@
     <ProjectReference Include="..\Vitly.DatabaseAccess\Vitly.DatabaseAccess.csproj">
       <Project>{a898b845-630c-4e5e-acc6-3201c74024d4}</Project>
       <Name>Vitly.DatabaseAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vitly.Security\Vitly.Security.csproj">
+      <Project>{bdf6cf84-2de3-402e-b4d3-1df5a789485a}</Project>
+      <Name>Vitly.Security</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

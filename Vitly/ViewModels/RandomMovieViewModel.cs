@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Vitly.Models;
-using Customer = Vitly.DatabaseAccess.Core.Model.Customer;
+using Vitly.DatabaseAccess.Core.Model;
 
 namespace Vitly.ViewModels
 {

@@ -15,10 +15,12 @@ namespace Vitly.DatabaseAccess.Persistence
             this.context = context;
             Customers = new CustomerRepository(context);
             MembershipTypes = new Repository<MembershipType>(context);
+            Movies = new Repository<Movie>(context);
         }
 
         public ICustomerRepository Customers { get; }
         public IRepository<MembershipType> MembershipTypes { get; }
+        public IRepository<Movie> Movies { get; }
 
         public int Commit()
         {

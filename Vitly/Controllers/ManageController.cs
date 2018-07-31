@@ -6,33 +6,34 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Vitly.Models;
+using Vitly.Security.Models;
+using Vitly.Security.Service;
 
 namespace Vitly.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        private ApplicationSignInManager signInManager;
-        private ApplicationUserManager userManager;
+        private VitlySignInManager signInManager;
+        private VitlyUserManager userManager;
 
         public ManageController() { }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(VitlyUserManager userManager, VitlySignInManager signInManager)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
         }
 
-        public ApplicationSignInManager SignInManager
+        public VitlySignInManager SignInManager
         {
-            get => this.signInManager ?? this.HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            get => this.signInManager ?? this.HttpContext.GetOwinContext().Get<VitlySignInManager>();
             private set => this.signInManager = value;
         }
 
-        public ApplicationUserManager UserManager
+        public VitlyUserManager UserManager
         {
-            get => this.userManager ?? this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            get => this.userManager ?? this.HttpContext.GetOwinContext().GetUserManager<VitlyUserManager>();
             private set => this.userManager = value;
         }
 
@@ -78,7 +79,7 @@ namespace Vitly.Controllers
                 new UserLoginInfo(loginProvider, providerKey));
             if (result.Succeeded)
             {
-                ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+                VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
                 if (user != null)
                 {
                     await this.SignInManager.SignInAsync(user, false, false);
@@ -136,7 +137,7 @@ namespace Vitly.Controllers
         public async Task<ActionResult> EnableTwoFactorAuthentication()
         {
             await this.UserManager.SetTwoFactorEnabledAsync(this.User.Identity.GetUserId(), true);
-            ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+            VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
             if (user != null)
             {
                 await this.SignInManager.SignInAsync(user, false, false);
@@ -152,7 +153,7 @@ namespace Vitly.Controllers
         public async Task<ActionResult> DisableTwoFactorAuthentication()
         {
             await this.UserManager.SetTwoFactorEnabledAsync(this.User.Identity.GetUserId(), false);
-            ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+            VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
             if (user != null)
             {
                 await this.SignInManager.SignInAsync(user, false, false);
@@ -188,7 +189,7 @@ namespace Vitly.Controllers
                     model.Code);
             if (result.Succeeded)
             {
-                ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+                VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
                 if (user != null)
                 {
                     await this.SignInManager.SignInAsync(user, false, false);
@@ -214,7 +215,7 @@ namespace Vitly.Controllers
                 return this.RedirectToAction("Index", new {Message = ManageMessageId.Error});
             }
 
-            ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+            VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
             if (user != null)
             {
                 await this.SignInManager.SignInAsync(user, false, false);
@@ -245,7 +246,7 @@ namespace Vitly.Controllers
                 model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+                VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
                 if (user != null)
                 {
                     await this.SignInManager.SignInAsync(user, false, false);
@@ -277,7 +278,7 @@ namespace Vitly.Controllers
                     await this.UserManager.AddPasswordAsync(this.User.Identity.GetUserId(), model.NewPassword);
                 if (result.Succeeded)
                 {
-                    ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+                    VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
                     if (user != null)
                     {
                         await this.SignInManager.SignInAsync(user, false, false);
@@ -301,7 +302,7 @@ namespace Vitly.Controllers
                 message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
-            ApplicationUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
+            VitlyUser user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
             if (user == null)
             {
                 return this.View("Error");
@@ -375,7 +376,7 @@ namespace Vitly.Controllers
 
         private bool HasPassword()
         {
-            ApplicationUser user = this.UserManager.FindById(this.User.Identity.GetUserId());
+            VitlyUser user = this.UserManager.FindById(this.User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PasswordHash != null;
@@ -386,7 +387,7 @@ namespace Vitly.Controllers
 
         private bool HasPhoneNumber()
         {
-            ApplicationUser user = this.UserManager.FindById(this.User.Identity.GetUserId());
+            VitlyUser user = this.UserManager.FindById(this.User.Identity.GetUserId());
             if (user != null)
             {
                 return user.PhoneNumber != null;
