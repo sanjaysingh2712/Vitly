@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using Vitly.Models;
+using Vitly.DatabaseAccess.Core.Model;
 using Vitly.ViewModels;
+using Customer = Vitly.DatabaseAccess.Core.Model.Customer;
 
 namespace Vitly.Controllers
 {
@@ -14,8 +14,8 @@ namespace Vitly.Controllers
             var movie = new Movie {Name = "Shrek!"};
             var customers = new List<Customer>
             {
-                new Customer {Id = 1, Name = "John Smith"},
-                new Customer {Id = 2, Name = "Mary Poppins"}
+                new Customer {CustomerId = 1, Name = "John Smith"},
+                new Customer {CustomerId = 2, Name = "Mary Poppins"}
             };
 
             var viewModel = new RandomMovieViewModel
@@ -24,24 +24,7 @@ namespace Vitly.Controllers
                 Customers = customers
             };
 
-                return this.View(viewModel);
-
-            //else
-            //{
-            //    return Content("We don't have any customers yet");
-            //}
-            
-        }
-
-        public ActionResult Customer(int id)
-        {
-            var customers = new List<Customer>
-            {
-                new Customer {Id = 1, Name = "John Smith"},
-                new Customer {Id = 2, Name = "Mary Poppins"}
-            };
-            var customer = customers.FirstOrDefault(c => c.Id == id);
-            return customer != null ? View(customer) : null;
+            return this.View(viewModel);
         }
 
         // movies
