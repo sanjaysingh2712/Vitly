@@ -1,4 +1,4 @@
-﻿namespace Vitly.DatabaseAccess.Core.Model
+﻿namespace Vitly.DatabaseAccess.Core.Models
 {
     public class MembershipType
     {

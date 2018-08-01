@@ -1,5 +1,5 @@
 using System.Data.Entity;
-using Vitly.DatabaseAccess.Core.Model;
+using Vitly.DatabaseAccess.Core.Models;
 using Vitly.DatabaseAccess.Persistence.EntityConfigurations;
 
 namespace Vitly.DatabaseAccess.Persistence

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Vitly.DatabaseAccess.Core.Repositories;
 
-namespace Vitly.DatabaseAccess.Persistence.Repositories
+namespace DatabaseManager.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

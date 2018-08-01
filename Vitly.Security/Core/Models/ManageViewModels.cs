@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Vitly.Security.Models
+namespace Vitly.Security.Core.Models
 {
     public class IndexViewModel
     {

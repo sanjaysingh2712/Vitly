@@ -50,11 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IUnitOfWork.cs" />
-    <Compile Include="Core\Model\Customer.cs" />
-    <Compile Include="Core\Model\MembershipType.cs" />
-    <Compile Include="Core\Model\Movie.cs" />
+    <Compile Include="Core\Models\Customer.cs" />
+    <Compile Include="Core\Models\MembershipType.cs" />
+    <Compile Include="Core\Models\Movie.cs" />
     <Compile Include="Core\Repositories\ICustomerRepository.cs" />
-    <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Migrations\201807291807565_InitialModel.cs" />
     <Compile Include="Migrations\201807291807565_InitialModel.Designer.cs">
       <DependentUpon>201807291807565_InitialModel.cs</DependentUpon>
@@ -83,7 +82,6 @@
     <Compile Include="Persistence\EntityConfigurations\CustomerConfiguration.cs" />
     <Compile Include="Persistence\EntityConfigurations\MovieConfiguration.cs" />
     <Compile Include="Persistence\Repositories\CustomerRepository.cs" />
-    <Compile Include="Persistence\Repositories\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Persistence\VitlyContext.cs" />
@@ -92,7 +90,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
+      <Project>{2f2eec38-66a5-4df6-bc32-ac749d174403}</Project>
+      <Name>DatabaseManager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807291807565_InitialModel.resx">
       <DependentUpon>201807291807565_InitialModel.cs</DependentUpon>

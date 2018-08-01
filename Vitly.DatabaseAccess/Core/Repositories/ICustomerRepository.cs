@@ -1,4 +1,5 @@
-﻿using Vitly.DatabaseAccess.Core.Model;
+﻿using DatabaseManager.Repositories;
+using Vitly.DatabaseAccess.Core.Models;
 
 namespace Vitly.DatabaseAccess.Core.Repositories
 {

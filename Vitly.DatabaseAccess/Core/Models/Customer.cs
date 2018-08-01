@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vitly.DatabaseAccess.Core.Model
+﻿namespace Vitly.DatabaseAccess.Core.Models
 {
     public class Customer
     {

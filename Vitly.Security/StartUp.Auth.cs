@@ -4,7 +4,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using Vitly.Security.Models;
+using Vitly.Security.Core.Models;
+using Vitly.Security.Persistence;
 using Vitly.Security.Service;
 
 namespace Vitly.Security

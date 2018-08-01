@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Vitly.DatabaseAccess.Core.Model;
+using Vitly.DatabaseAccess.Core.Models;
 
 namespace Vitly.ViewModels
 {
