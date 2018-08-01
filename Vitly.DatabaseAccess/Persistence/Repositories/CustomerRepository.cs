@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
-using Vitly.DatabaseAccess.Core.Model;
+using DatabaseManager.Repositories;
+using Vitly.DatabaseAccess.Core.Models;
 using Vitly.DatabaseAccess.Core.Repositories;
 
 namespace Vitly.DatabaseAccess.Persistence.Repositories

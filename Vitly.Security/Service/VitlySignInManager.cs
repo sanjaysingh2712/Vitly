@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Vitly.Security.Models;
+using Vitly.Security.Core.Models;
 
 namespace Vitly.Security.Service
 {

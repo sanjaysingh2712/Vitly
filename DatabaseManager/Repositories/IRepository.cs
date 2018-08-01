@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Vitly.DatabaseAccess.Core.Repositories
+namespace DatabaseManager.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

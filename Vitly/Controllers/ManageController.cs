@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Vitly.Security.Models;
+using Vitly.Security.Core.Models;
 using Vitly.Security.Service;
 
 namespace Vitly.Controllers

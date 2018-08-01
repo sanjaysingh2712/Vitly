@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Vitly.Security.Models
+namespace Vitly.Security.Core.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

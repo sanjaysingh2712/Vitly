@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
-using Vitly.DatabaseAccess.Core.Model;
+using Vitly.DatabaseAccess.Core.Models;
 using Vitly.ViewModels;
-using Customer = Vitly.DatabaseAccess.Core.Model.Customer;
+
 
 namespace Vitly.Controllers
 {
@@ -11,20 +12,47 @@ namespace Vitly.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movie {Name = "Shrek!"};
-            var customers = new List<Customer>
-            {
-                new Customer {CustomerId = 1, Name = "John Smith"},
-                new Customer {CustomerId = 2, Name = "Mary Poppins"}
-            };
+            IEnumerable<Movie> movies = GetMovies();
+            List<Customer> customers = GetCustomers();
+            
 
             var viewModel = new RandomMovieViewModel
             {
-                Movie = movie,
+                Movie = movies.First(),
                 Customers = customers
             };
 
             return this.View(viewModel);
+        }
+
+        private List<Customer> GetCustomers()
+        {
+            return new List<Customer>
+            {
+                new Customer
+                {
+                    CustomerId = 1,
+                    Name = "John Smith",
+                    IsSubscribedToNewletter = true,
+                    MembershipType = new MembershipType {MembershipTypeId = 1}
+                },
+                new Customer
+                {
+                    CustomerId = 2,
+                    Name = "Mary Poppins",
+                    IsSubscribedToNewletter = false,
+                    MembershipType = new MembershipType {MembershipTypeId = 2}
+                }
+            };
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie {MovieId = 1, Name = "Shrek!"},
+                new Movie {MovieId = 2, Name = "Mickey Mouse"}
+            };
         }
 
         // movies
