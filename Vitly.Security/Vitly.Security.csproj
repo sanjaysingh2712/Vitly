@@ -78,6 +78,11 @@
     <Compile Include="Core\Models\AccountViewModels.cs" />
     <Compile Include="Core\Models\VitlyUser.cs" />
     <Compile Include="Core\Models\ManageViewModels.cs" />
+    <Compile Include="Migrations\201808010028138_InitialSecurityModel.cs" />
+    <Compile Include="Migrations\201808010028138_InitialSecurityModel.Designer.cs">
+      <DependentUpon>201808010028138_InitialSecurityModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\VitlySecurityContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\EmailService.cs" />
@@ -90,6 +95,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808010028138_InitialSecurityModel.resx">
+      <DependentUpon>201808010028138_InitialSecurityModel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
