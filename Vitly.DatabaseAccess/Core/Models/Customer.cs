@@ -1,4 +1,7 @@
-﻿namespace Vitly.DatabaseAccess.Core.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace Vitly.DatabaseAccess.Core.Models
 {
     public class Customer
     {
@@ -7,5 +10,6 @@
         public bool IsSubscribedToNewletter { get; set; }
         public MembershipType MembershipType { get; set; }
         public int MembershipTypeId { get; set; }
+        public DateTime BirthDate { get; set; }
     }
 }

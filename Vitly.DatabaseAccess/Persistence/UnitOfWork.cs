@@ -11,7 +11,12 @@ namespace Vitly.DatabaseAccess.Persistence
     {
         private readonly DbContext context;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork() : this(new VitlyContext())
+        {
+            
+        }
+         
+        private UnitOfWork(DbContext context)
         {
             this.context = context;
             this.Customers = new CustomerRepository(context);

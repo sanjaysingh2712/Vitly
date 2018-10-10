@@ -54,6 +54,8 @@
     <Compile Include="Core\Models\MembershipType.cs" />
     <Compile Include="Core\Models\Movie.cs" />
     <Compile Include="Core\Repositories\ICustomerRepository.cs" />
+    <Compile Include="Manager\CustomerManager.cs" />
+    <Compile Include="Manager\Interfaces\ICustomerManager.cs" />
     <Compile Include="Migrations\201807291807565_InitialModel.cs" />
     <Compile Include="Migrations\201807291807565_InitialModel.Designer.cs">
       <DependentUpon>201807291807565_InitialModel.cs</DependentUpon>
@@ -77,6 +79,14 @@
     <Compile Include="Migrations\201807312335474_AddMovie.cs" />
     <Compile Include="Migrations\201807312335474_AddMovie.Designer.cs">
       <DependentUpon>201807312335474_AddMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809132129247_Add birthdate to customer.cs" />
+    <Compile Include="Migrations\201809132129247_Add birthdate to customer.Designer.cs">
+      <DependentUpon>201809132129247_Add birthdate to customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809132304466_Add name to membership type.cs" />
+    <Compile Include="Migrations\201809132304466_Add name to membership type.Designer.cs">
+      <DependentUpon>201809132304466_Add name to membership type.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistence\EntityConfigurations\CustomerConfiguration.cs" />
@@ -115,6 +125,13 @@
     <EmbeddedResource Include="Migrations\201807312335474_AddMovie.resx">
       <DependentUpon>201807312335474_AddMovie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809132129247_Add birthdate to customer.resx">
+      <DependentUpon>201809132129247_Add birthdate to customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809132304466_Add name to membership type.resx">
+      <DependentUpon>201809132304466_Add name to membership type.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

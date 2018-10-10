@@ -1,0 +1,31 @@
+﻿@model Vitly.ViewModels.NewCustomerViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@using (@Html.BeginForm("Create", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+       <label for="@nameof(Model.Customer.BirthDate)">Date of Birth</label>
+        @Html.TextBoxFor(c => c.Customer.BirthDate, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedToNewletter) Subscribed To Newsletter
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="@nameof(Model.Customer.MembershipTypeId)">Membership Type</label>
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "MembershipTypeId", "Name"), "Select Memebership Type", new { @class = "form-control" })
+    </div>
+    <div>
+        <button type="button" class="btn btn-primary active" onclick="location.href = '@Url.Action("Create", "Customers")'">Save</button>
+    </div>
+}

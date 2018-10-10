@@ -2,6 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 using Vitly.DatabaseAccess.Core.Models;
+using Vitly.DatabaseAccess.Manager;
+using Vitly.DatabaseAccess.Manager.Interfaces;
+using Vitly.DatabaseAccess.Persistence;
+using Vitly.ViewModels;
 
 namespace Vitly.Controllers
 {
@@ -12,6 +16,23 @@ namespace Vitly.Controllers
         {
             List<Customer> customers = this.GetCustomers();
             return this.View(customers);
+        }
+
+        public ActionResult New()
+        {
+            ICustomerManager customerManager = new CustomerManager(new UnitOfWork());
+            var vm = new NewCustomerViewModel
+            {
+                MembershipTypes = customerManager.GetMembershipTypes()
+            };
+
+            return this.View(vm);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            return new EmptyResult();
         }
 
         public ActionResult Details(int id)

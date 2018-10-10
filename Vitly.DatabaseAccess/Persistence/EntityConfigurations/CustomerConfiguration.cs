@@ -10,6 +10,8 @@ namespace Vitly.DatabaseAccess.Persistence.EntityConfigurations
             Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(255);
+            Property(c => c.BirthDate)
+                .IsRequired();
         }
     }
 }
