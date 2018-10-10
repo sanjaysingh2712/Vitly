@@ -1,4 +1,5 @@
-﻿@using Vitly.DatabaseAccess.Core.Models
+﻿@using System.Web.UI.WebControls
+@using Vitly.DatabaseAccess.Core.Models
 @model IEnumerable<Vitly.DatabaseAccess.Core.Models.Customer>
 @{
     ViewBag.Title = "Customers";
@@ -32,6 +33,11 @@ else
             </tr>
         }
         </tbody>
+        <tfoot>
+            <tr>
+                <td><a class="btn btn-primary active" role="button" aria-pressed="true" href="/Customers/New">Create New Customer</a></td>
+            </tr>
+        </tfoot>
 
     </table>
 }
